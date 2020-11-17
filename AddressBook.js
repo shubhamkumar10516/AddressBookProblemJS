@@ -40,6 +40,21 @@ let addName = (arr, contact) => {
 let searchByNameAndEdit = (contact, name , updatedName) => {
     contact.filter(person => person.firstName == name).forEach(person => person.firstName = updatedName);
 };
+
+//Function to search for contacts in state or city
+let checkPersonInState = (arr, name, state, city) => {
+    let contactFound = arr.filter(name => name.state == state).find(x => x.firstName == name);
+    if (contactFound != undefined) {
+        console.log(contactFound.getDetails());
+    }
+    else {
+        console.log("Person not found in this state");
+    }
+    contactFound = arr.filter(name => name.city == city).find(x => x.firstName == name);
+    if (contactFound != undefined) {
+        console.log(contactFound.getDetails());
+    }
+}
 class Contact{
     constructor(firstName, lastName, address, city , state, zip, phoneNumber, email){
         this.firstName = firstName;
