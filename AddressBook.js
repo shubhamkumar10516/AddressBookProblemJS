@@ -2,6 +2,7 @@
 // functions to check the correct pattern
 let name;
 let phzip;
+let arr;
 let namePattern = RegExp('^[A-Z]{1}[A-Za-z]{2,}$'); 
 let addPattern = RegExp('^[A-Za-z0-9]{4,}$');
 let zipPattern = RegExp('^[1-9]{3}[ ]*[0-9]{3}$');
@@ -25,6 +26,11 @@ let addressOrCityOrStateCheck = (name) => name.test(addPattern);
 let phoneCheck = (phzip) => phzip.test(phonePattern);
 let zipCheck = (phzip) => phzip.test(zipPattern);
 let emailCheck = (name) => name.test(emailPattern);
+//Function to delete name in addressBook
+function deleteName(arr, name) {
+    let indx = contactArr.map(item => item.firstName).indexOf(name);
+    contactArray.splice(indx, 1);
+}
 class Contact{
     constructor(firstName, lastName, address, city , state, zip, phoneNumber, email){
         this.firstName = firstName;
@@ -97,5 +103,6 @@ class Contact{
  addName(addressBook, contact3);
  addName(addressBook, contact4);
  searchByNameAndEdit(addressBook, "Rohit", "Nakul");
+ deleteName(addressBook, "Ram");
 }
 
