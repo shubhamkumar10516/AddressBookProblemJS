@@ -8,18 +8,8 @@ let addPattern = RegExp('^[A-Za-z0-9]{4,}$');
 let zipPattern = RegExp('^[1-9]{3}[ ]*[0-9]{3}$');
 let phonePattern = RegExp('^[1-9]{1}[ ][0-9]{9,}$');
 let emailPattern = RegExp('^([a-zA-Z]+[a-zA-Z._0-9]*[a-zA-Z0-9]+)[@]([a-zA-Z]{2,}[.][a-zA-Z]{2,}[.][a-zA-Z]{2,})$');
-let addName = (arr, contact) => {
-    for (contacts in arr) {
-        if (contacts.firstName == contact.firstName) {
-            throw 'Contact with Name already exist';
-          }
-    }
-    arr.push(contact);
-};
 
-let searchByNameAndEdit = (contact, name , updatedName) => {
-     contact.filter(person => person.firstName == name).forEach(person => person.firstName = updatedName);
-};
+
 let firstNameCheck = (name) =>  name.test(namePattern);
 let lastNameCheck = (name) => name.test(namePattern);
 let addressOrCityOrStateCheck = (name) => name.test(addPattern);
@@ -35,7 +25,21 @@ function deleteName(arr, name) {
 let countContacts =  (arr) => {
     let count = arr.reduce((ac, cV) => ac.concat(cV), []).length;
     console.log("total number of contacts in array is: " + count);
-}
+};
+
+//Checking duplicate name and then  adding
+let addName = (arr, contact) => {
+    for (contacts in arr) {
+        if (contacts.firstName == contact.firstName) {
+            throw 'Contact with Name already exist';
+          }
+    }
+    arr.push(contact);
+};
+
+let searchByNameAndEdit = (contact, name , updatedName) => {
+    contact.filter(person => person.firstName == name).forEach(person => person.firstName = updatedName);
+};
 class Contact{
     constructor(firstName, lastName, address, city , state, zip, phoneNumber, email){
         this.firstName = firstName;
