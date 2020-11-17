@@ -7,6 +7,14 @@ let addPattern = RegExp('^[A-Za-z0-9]{4,}$');
 let zipPattern = RegExp('^[1-9]{3}[ ]*[0-9]{3}$');
 let phonePattern = RegExp('^[1-9]{1}[ ][0-9]{9,}$');
 let emailPattern = RegExp('^([a-zA-Z]+[a-zA-Z._0-9]*[a-zA-Z0-9]+)[@]([a-zA-Z]{2,}[.][a-zA-Z]{2,}[.][a-zA-Z]{2,})$');
+let addName = (arr, contact) => {
+    for (contacts in arr) {
+        if (contacts.firstName == contact.firstName) {
+            throw 'Contact with Name already exist';
+          }
+    }
+    arr.push(contact);
+}
 
 let firstNameCheck = (name) =>  name.test(namePattern);
 let lastNameCheck = (name) => name.test(namePattern);
@@ -76,5 +84,14 @@ class Contact{
   }
  let contact1 = new Contact(firstName, lastName, address, city, state, zip, phone, email);
 
+ let contact1 = new Contact("Rahul", "Bose", "sector 13", "Kolkata", "Wb", 234567, 098757, "rahul@gmail.com");
+ let contact2 = new Contact("Rohit", "Bose", "sector 12", "Kolkata", "Wb", 234567, 098757, "rohul@gmail.com");
+ let contact3 = new Contact("Ram", "Bose", "sector 13", "Kolkata", "Wb", 234567, 098757, "ram@gmail.com");
+ let contact4 = new Contact("Ramesh", "Bose", "sector 13", "Kolkata", "Wb", 234567, 098757, "rahul@gmail.com");
+ let addressBook = new Array();
+ addName(addressBook, contact1);
+ addName(addressBook, contact2);
+ addName(addressBook, contact3);
+ addName(addressBook, contact4);
 }
 
