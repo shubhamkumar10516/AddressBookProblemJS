@@ -14,8 +14,11 @@ let addName = (arr, contact) => {
           }
     }
     arr.push(contact);
-}
+};
 
+let searchByNameAndEdit = (contact, name , updatedName) => {
+     contact.filter(person => person.firstName == name).forEach(person => person.firstName = updatedName);
+};
 let firstNameCheck = (name) =>  name.test(namePattern);
 let lastNameCheck = (name) => name.test(namePattern);
 let addressOrCityOrStateCheck = (name) => name.test(addPattern);
@@ -93,5 +96,6 @@ class Contact{
  addName(addressBook, contact2);
  addName(addressBook, contact3);
  addName(addressBook, contact4);
+ searchByNameAndEdit(addressBook, "Rohit", "Nakul");
 }
 
