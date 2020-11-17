@@ -31,6 +31,11 @@ function deleteName(arr, name) {
     let indx = contactArr.map(item => item.firstName).indexOf(name);
     contactArray.splice(indx, 1);
 }
+// count no of contacts
+let countContacts =  (arr) => {
+    let count = arr.reduce((ac, cV) => ac.concat(cV), []).length;
+    console.log("total number of contacts in array is: " + count);
+}
 class Contact{
     constructor(firstName, lastName, address, city , state, zip, phoneNumber, email){
         this.firstName = firstName;
@@ -104,5 +109,6 @@ class Contact{
  addName(addressBook, contact4);
  searchByNameAndEdit(addressBook, "Rohit", "Nakul");
  deleteName(addressBook, "Ram");
+ countContacts(addressBook);
 }
 
